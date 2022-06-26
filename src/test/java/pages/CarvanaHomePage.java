@@ -12,17 +12,37 @@ public class CarvanaHomePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-   @FindBy(xpath = "//div[@class='HeaderMenustyles__HeaderItems-ogb5qa-1 dewPuX']/*[contains(@data-qa, 'menu')]")
-    public List<WebElement> headerMenuItems;
+  // @FindBy(xpath = "//div[@class='HeaderMenustyles__HeaderItems-ogb5qa-1 dewPuX']/*[contains(@data-qa, 'menu')]")
+    //public List<WebElement> headerMenuItems;
 
-    public void clickOnHeaderMenuItems(String itemText){
-        for(WebElement item : headerMenuItems){
-            if(item.getText().equals(itemText)){
-                item.click();
+    @FindBy(css = "div[data-qa='header-items']>a")
+    public List<WebElement> menuHeaderLinks;
+
+    @FindBy(css = "span.kAQuLc")
+    public WebElement financing;
+
+    @FindBy(css = ".ewpFSy>a")
+    public List<WebElement> financingDropdownLinks;
+
+    public void clickOnHeaderLink(String linkText){
+        for (WebElement link : menuHeaderLinks) {
+            if (link.getText().equals(linkText)){
+                link.click();
                 break;
             }
         }
     }
+
+
+    public void clickOnFinancialDropdownLinks(String linkText){
+        for (WebElement link : financingDropdownLinks) {
+            if (link.getText().equals(linkText)){
+                link.click();
+                break;
+            }
+        }
+    }
+
 
 
 }
